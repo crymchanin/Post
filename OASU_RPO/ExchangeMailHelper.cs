@@ -10,16 +10,16 @@ namespace OASU_RPO {
         /// <summary>
         /// Проверяет успешность подключения к серверу Exchange с указанными параметрами
         /// </summary>
+        /// <param name="ex">Параметры подключения</param>
         /// <param name="message">Возвращает текст ошибки подключения при ее наличии</param>
         /// <returns></returns>
-        public static bool CheckConnection(out string message) {
+        public static bool CheckConnection(Configuration.Exchange ex, out string message) {
             try {
                 message = string.Empty;
 
                 ExchangeServiceBinding bind = new ExchangeServiceBinding();
-                bind.Credentials = new NetworkCredential(AppHelper.Configuration.Exchange.Username.GetDecryptedString(),
-                    AppHelper.Configuration.Exchange.Password.GetDecryptedString(), AppHelper.Configuration.Exchange.Domain);
-                bind.Url = "https://" + AppHelper.Configuration.Exchange.ServerName + "/EWS/Exchange.asmx";
+                bind.Credentials = new NetworkCredential(ex.Username, ex.Password, ex.Domain);
+                bind.Url = "https://" + ex.ServerName + "/EWS/Exchange.asmx";
 
                 FindItemType findType = new FindItemType();
                 findType.Traversal = ItemQueryTraversalType.Shallow;

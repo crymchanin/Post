@@ -353,8 +353,17 @@ namespace OASU_RPO.GUI {
         private void FBTestButton_Click(object sender, EventArgs e) {
             string message;
 
+            Configuration.FBConnection conn = new Configuration.FBConnection() {
+                Datasource = FBDatasourceBox.Text,
+                Database = FBDatabaseBox.Text,
+                Username = FBUsernameBox.Text,
+                Password = FBPasswordBox.Text,
+                Charset = FBCharsetBox.Text,
+                ConnectionLifetime = (int)FBConnLifetimeBox.Value,
+                Pooling = FBPoolingBox.Checked
+            };
             Cursor = Cursors.WaitCursor;
-            if (SQLHelper.CheckConnection(out message)) {
+            if (SQLHelper.CheckConnection(conn, out message)) {
                 MessageBox.Show("Подключение установлено", string.Format("Хост: {0}", AppHelper.Configuration.FBConnection.Datasource),
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -369,8 +378,16 @@ namespace OASU_RPO.GUI {
         private void ExchangeTestButton_Click(object sender, EventArgs e) {
             string message;
 
+            Configuration.Exchange ex = new Configuration.Exchange() {
+                ServerName = ExServerNameBox.Text,
+                Domain = ExDomainBox.Text,
+                Username = ExUsernameBox.Text,
+                Password = ExPassBox.Text,
+                SenderName = ExSenderBox.Text,
+                MessageRegex = ExRegexBox.Text
+            };
             Cursor = Cursors.WaitCursor;
-            if (ExchangeMailHelper.CheckConnection(out message)) {
+            if (ExchangeMailHelper.CheckConnection(ex, out message)) {
                 MessageBox.Show("Подключение установлено", string.Format("Хост: {0}", AppHelper.Configuration.Exchange.ServerName),
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

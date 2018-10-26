@@ -85,7 +85,7 @@ namespace OASU_RPO {
             }
             catch (Exception error) {
                 ShowMessage("Ошибка", true);
-                MessageBox.Show(error.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AppHelper.Log.Write("Ошибка во время проверки: " + error.ToString(), Feodosiya.Lib.Logs.MessageType.Error);
             }
             finally {
                 IsRunning = false;

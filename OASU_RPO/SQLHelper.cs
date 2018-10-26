@@ -13,15 +13,14 @@ namespace OASU_RPO {
         /// <summary>
         /// Проверяет успешность подключения к серверу Firebird с указанными параметрами
         /// </summary>
+        /// <param name="conn">Параметры подключения</param>
         /// <param name="message">Возвращает текст ошибки подключения при ее наличии</param>
         /// <returns></returns>
-        public static bool CheckConnection(out string message) {
+        public static bool CheckConnection(Configuration.FBConnection conn, out string message) {
             try {
                 message = string.Empty;
                 string connStr = string.Format("User={0};Password={1};Database={2};DataSource={3};Pooling={4};Connection lifetime={5};Charset={6};",
-                    AppHelper.Configuration.FBConnection.Username.GetDecryptedString(), AppHelper.Configuration.FBConnection.Password.GetDecryptedString(),
-                    AppHelper.Configuration.FBConnection.Database, AppHelper.Configuration.FBConnection.Datasource, AppHelper.Configuration.FBConnection.Pooling.ToString().ToLower(),
-                    AppHelper.Configuration.FBConnection.ConnectionLifetime, AppHelper.Configuration.FBConnection.Charset);
+                    conn.Username, conn.Password, conn.Database, conn.Datasource, conn.Pooling.ToString().ToLower(), conn.ConnectionLifetime, conn.Charset);
 
                 using (FbConnection connection = new FbConnection(connStr)) {
                     connection.Open();
