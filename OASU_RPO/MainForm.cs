@@ -122,7 +122,7 @@ namespace OASU_RPO {
 
                 return;
             }
-            AppHelper.Configuration.SingletonEvent.PropertyChangedEvent += new ChangeEventArgs(OnCofigurationChanged);
+            AppHelper.Configuration.SingletonEvent.PropertyChangedEvent += new ChangeEventHandler(OnCofigurationChanged);
 
             StringHelper.Encoding = Encoding.UTF8;
             StringHelper.PassPhrase = AppHelper.GUID;

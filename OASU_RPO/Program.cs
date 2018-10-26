@@ -28,6 +28,7 @@ namespace OASU_RPO {
                 ProductName = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductName;
                 CurrentDirectory = IOHelper.GetCurrentDir(Assembly.GetExecutingAssembly());
                 AppHelper.Log = new Log(Path.Combine(CurrentDirectory, ProductName + ".log")) { InsertDate = true, AutoCompress = true };
+                AppHelper.Log.ExceptionThrownEvent += (e) => MessageBox.Show(e.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
@@ -53,12 +54,7 @@ namespace OASU_RPO {
                             }
                         }
                         catch (AbandonedMutexException err) {
-                            try {
-                                AppHelper.Log.Write("Ошибка синхронизации Mutex: " + err.ToString(), MessageType.Error);
-                            }
-                            catch (Exception error) {
-                                MessageBox.Show(error.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
+                            AppHelper.Log.Write("Ошибка синхронизации Mutex: " + err.ToString(), MessageType.Error);
                             hasHandle = true;
                         }
 

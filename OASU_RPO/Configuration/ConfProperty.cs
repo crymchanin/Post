@@ -9,7 +9,7 @@ namespace OASU_RPO.Configuration {
     /// <param name="newValue"></param>
     /// <param name="oldValue"></param>
     /// <param name="propertyName"></param>
-    public delegate void ChangeEventArgs(object newValue, object oldValue, string propertyName);
+    public delegate void ChangeEventHandler(object newValue, object oldValue, string propertyName);
 
     /// <summary>
     /// Синглтон события PropertyChanged
@@ -18,7 +18,7 @@ namespace OASU_RPO.Configuration {
         private static SingletonEvent _Instance = null;
         private static readonly object padlock = new object();
 
-        public event ChangeEventArgs PropertyChangedEvent;
+        public event ChangeEventHandler PropertyChangedEvent;
 
         private SingletonEvent() { }
 
@@ -35,7 +35,7 @@ namespace OASU_RPO.Configuration {
         }
 
         public void OnPropertyChanged(object newValue, object oldValue, [CallerMemberName]string propertyName = "") {
-            ChangeEventArgs ev = PropertyChangedEvent;
+            ChangeEventHandler ev = PropertyChangedEvent;
 
             ev?.Invoke(newValue, oldValue, propertyName);
         }
