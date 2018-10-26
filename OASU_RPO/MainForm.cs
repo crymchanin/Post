@@ -23,6 +23,8 @@ using Drawing = System.Drawing;
 namespace OASU_RPO {
     public partial class MainForm : Form {
 
+        private static bool Initialized = false;
+
         private static bool RunOnce = false;
 
         private volatile bool IsRunning = false;
@@ -32,6 +34,7 @@ namespace OASU_RPO {
         private static NotificationWindow notifyWindow;
 
 
+        // Проверка файлов
         private void CheckFiles() {
             try {
                 IsRunning = true;
@@ -85,7 +88,7 @@ namespace OASU_RPO {
             }
             catch (Exception error) {
                 ShowMessage("Ошибка", true);
-                AppHelper.Log.Write("Ошибка во время проверки: " + error.ToString(), Feodosiya.Lib.Logs.MessageType.Error);
+                AppHelper.Log.Write("Ошибка во время операции проверки: " + error.ToString(), Feodosiya.Lib.Logs.MessageType.Error);
             }
             finally {
                 IsRunning = false;
@@ -108,19 +111,34 @@ namespace OASU_RPO {
             }
             catch (Exception error) {
                 ShowMessage("Ошибка", true);
-                MessageBox.Show(error.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AppHelper.Log.Write("Ошибка во время операции проверки: " + error.ToString(), Feodosiya.Lib.Logs.MessageType.Error);
             }
         }
 
         // Инициализация
-        private void Init() {
+        private bool Init() {
             AppHelper.ConfHelper = new ConfHelper("settings.conf");
             AppHelper.Configuration = AppHelper.ConfHelper.LoadConfig<Config>();
             if (!AppHelper.ConfHelper.Success) {
                 MessageBox.Show("Ошибка загрузки конфигурации:\r\n" + AppHelper.ConfHelper.LastError.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Load += (s, e) => Application.Exit();
+                AppHelper.Log.Write("Ошибка загрузки конфигурации: " + AppHelper.ConfHelper.LastError.ToString(), Feodosiya.Lib.Logs.MessageType.Error);
+                if (AppHelper.ConfHelper.LastError is System.IO.FileNotFoundException ||
+                    AppHelper.ConfHelper.LastError is System.Runtime.Serialization.SerializationException) {
 
-                return;
+                    if (MessageBox.Show("Создать файл конфигурации по умолчанию?", "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) {
+                        AppHelper.Configuration = new Config();
+                    }
+                    else {
+                        Load += (s, e) => Application.Exit();
+
+                        return false;
+                    }
+                }
+                else {
+                    Load += (s, e) => Application.Exit();
+
+                    return false;
+                }     
             }
             AppHelper.Configuration.SingletonEvent.PropertyChangedEvent += new ChangeEventHandler(OnCofigurationChanged);
 
@@ -138,13 +156,18 @@ namespace OASU_RPO {
                 }
             }
             catch { }
+
+            return true;
         }
 
         public MainForm() {
             try {
                 InitializeComponent();
 
-                Init();
+                Initialized = Init();
+                if (!Initialized) {
+                    return;
+                }
 
                 MainTimer.Interval = AppHelper.Configuration.Global.ShedulerInterval;
 
@@ -157,7 +180,8 @@ namespace OASU_RPO {
                 notifyWindow.Opacity = ((double)AppHelper.Configuration.Global.NotifyWindowOpacity) / 100D;
             }
             catch (Exception error) {
-
+                AppHelper.Log.Write("Ошибка: " + error.ToString(), Feodosiya.Lib.Logs.MessageType.Error);
+                MessageBox.Show(error.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -284,7 +308,7 @@ namespace OASU_RPO {
 
         // Скрытие формы при запуске
         protected override void SetVisibleCore(bool value) {
-            if (!RunOnce) {
+            if (!RunOnce && Initialized) {
                 value = !AppHelper.Configuration.Global.RunMinimized;
                 RunOnce = true;
             }
