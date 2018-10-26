@@ -1,0 +1,377 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Feodosia.Lib</name>
+    </assembly>
+    <members>
+        <member name="M:Feodosia.Lib.MainHelper.IsStringDigit(System.String)">
+            <summary>
+            Проверяет строку на то, что она является целым числом
+            </summary>
+            <param name="str">Проверяемая строка</param>
+        </member>
+        <member name="M:Feodosia.Lib.Mail.MailHelper.SendMail(System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Boolean,System.String)">
+            <summary>
+            Отправка письма на почтовый ящик
+            </summary>
+            <param name="from">Адрес отправителя</param>
+            <param name="password">пароль к почтовому ящику отправителя</param>
+            <param name="mailto">Адрес получателя</param>
+            <param name="caption">Тема письма</param>
+            <param name="message">Сообщение</param>
+            <param name="smtpServer">Имя SMTP-сервера</param>
+            <param name="smtpPort">Порт SMTP</param>
+            <param name="enableSSL">Использовать протокол SSL</param>
+            <param name="attachFile">Присоединенный файл</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.FormatException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:System.Net.Mail.SmtpException"></exception>
+            <exception cref="T:System.Net.Mail.SmtpFailedRecipientsException"></exception>
+        </member>
+        <member name="T:Feodosia.Lib.Logs.LogTypes">
+            <summary>
+            Представляет перечисление возможных типов лог-файла
+            </summary>
+        </member>
+        <member name="F:Feodosia.Lib.Logs.LogTypes.Text">
+            <summary>
+            Текстовый лог-файл
+            </summary>
+        </member>
+        <member name="F:Feodosia.Lib.Logs.LogTypes.Memory">
+            <summary>
+            Лог-файл в памяти
+            </summary>
+        </member>
+        <member name="T:Feodosia.Lib.Logs.MessageType">
+            <summary>
+            Представляет перечисление возможных типов выводимых сообщений
+            </summary>
+        </member>
+        <member name="F:Feodosia.Lib.Logs.MessageType.None">
+            <summary>
+            Обычный
+            </summary>
+        </member>
+        <member name="F:Feodosia.Lib.Logs.MessageType.Information">
+            <summary>
+            Информация
+            </summary>
+        </member>
+        <member name="F:Feodosia.Lib.Logs.MessageType.Warning">
+            <summary>
+            Предупреждение
+            </summary>
+        </member>
+        <member name="F:Feodosia.Lib.Logs.MessageType.Error">
+            <summary>
+            Ошибка
+            </summary>
+        </member>
+        <member name="F:Feodosia.Lib.Logs.MessageType.Debug">
+            <summary>
+            Отладка
+            </summary>
+        </member>
+        <member name="T:Feodosia.Lib.Logs.Log">
+            <summary>
+            Представляет методы для создания лог-файла и его последующей записи и сохранения
+            </summary>
+        </member>
+        <member name="M:Feodosia.Lib.Logs.Log.#ctor">
+            <summary>
+            Инициализирует пустой экземпляр класса Log
+            </summary>
+        </member>
+        <member name="M:Feodosia.Lib.Logs.Log.#ctor(System.String)">
+            <summary>
+            Инициализирует пустой экземпляр класса Log с заданным путем лог-файла
+            </summary>
+            <param name="logPath">Имя создаваемого лог-файла</param>
+        </member>
+        <member name="M:Feodosia.Lib.Logs.Log.#ctor(System.String,Feodosia.Lib.Logs.LogTypes)">
+            <summary>
+            Инициализирует пустой экземпляр класса Log с заданным путем и типом лог-файла
+            </summary>
+            <param name="logPath">Имя создаваемого лог-файла</param>
+            <param name="logType">Тип создаваемого лог-файла</param>
+        </member>
+        <member name="M:Feodosia.Lib.Logs.Log.Write(System.String,Feodosia.Lib.Logs.MessageType)">
+            <summary>
+            Записывает строку с указанным текстом в лог-файл
+            </summary>
+            <param name="text">Текст для записи</param>
+            <param name="msgType">Тип выводимого сообщения</param>
+            <exception cref="T:System.FormatException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.IO.FileNotFoundException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+        </member>
+        <member name="M:Feodosia.Lib.Logs.Log.Write(System.String,System.Text.Encoding,Feodosia.Lib.Logs.MessageType)">
+            <summary>
+            Записывает строку с указанным текстом в лог-файл
+            </summary>
+            <param name="text">Текст для записи</param>
+            <param name="encoding">Кодировка записываемого текста</param>
+            <param name="msgType">Тип выводимого сообщения</param>
+            <exception cref="T:System.FormatException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.IO.FileNotFoundException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+        </member>
+        <member name="M:Feodosia.Lib.Logs.Log.SaveFromMemory">
+            <summary>
+            Сохраняет лог-файл из памяти на накопитель информации
+            </summary>
+            <exception cref="T:System.InvalidOperationException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="M:Feodosia.Lib.Logs.Log.SaveFromMemory(System.Text.Encoding)">
+            <summary>
+            Сохраняет лог-файл из памяти на накопитель информации
+            </summary>
+            <param name="encoding">Кодировка записываемого текста</param>
+            <exception cref="T:System.InvalidOperationException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="M:Feodosia.Lib.Logs.Log.Compress(System.String,System.String)">
+            <summary>
+            Помещает указанный текстовый файл-лог в архив и сохраняет его по заданному пути. Если файл архива с таким именем уже существует, то он будет перезаписан
+            </summary>
+            <param name="logPath">Путь к исходному лог-файлу</param>
+            <param name="gzName">Имя создаваемого сжатого лог-файла</param>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.IO.FileNotFoundException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+            <exception cref="T:System.Text.EncoderFallbackException"/>
+            <exception cref="T:System.InvalidOperationException"/>
+            <exception cref="T:System.ObjectDisposedException"/>
+        </member>
+        <member name="M:Feodosia.Lib.Logs.Log.Delete">
+            <summary>
+            Удаляет лог-файл с накопителя информации либо из памяти
+            </summary>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.NotSupportedException"/>
+        </member>
+        <member name="P:Feodosia.Lib.Logs.Log.LogPath">
+            <summary>
+            Возвращает или задает имя текущего лог-файла
+            </summary>
+        </member>
+        <member name="P:Feodosia.Lib.Logs.Log.InsertDate">
+            <summary>
+            Возвращает или задает значение, определяющее, будет ли при записи в лог-файл, в начале строки, выводиться текущая дата операции
+            </summary>
+        </member>
+        <member name="P:Feodosia.Lib.Logs.Log.DateFormat">
+            <summary>
+            Возвращает или задает значение, определяющее формат выводимой даты в начале строки. Для обращения к данному свойсту, значение свойства InsertDate  должно быть true
+            </summary>
+            <exception cref="T:System.InvalidOperationException"/>
+        </member>
+        <member name="P:Feodosia.Lib.Logs.Log.LogType">
+            <summary>
+            Возвращает тип текущего лог-файла
+            </summary>
+        </member>
+        <member name="T:Feodosia.Lib.Threading.ThreadingHelper">
+            <summary>
+            Класс содержащий методы для работы с многопоточностью
+            </summary>
+        </member>
+        <member name="M:Feodosia.Lib.Threading.ThreadingHelper.InvokeIfRequired(System.Windows.Forms.Control,System.Action)">
+            <summary>
+            Вызов делегата через Control.Invoke, если это необходимо
+            </summary>
+            <param name="control">Элемент управления</param>
+            <param name="action">Делегат с необходимым действием</param>
+        </member>
+        <member name="M:Feodosia.Lib.Threading.ThreadingHelper.InvokeIfRequired``1(System.Windows.Forms.Control,System.Action{``0},``0)">
+            <summary>
+            Вызов делегата через Control.Invoke, если это необходимо
+            </summary>
+            <typeparam name="T">Тип параметра делегата</typeparam>
+            <param name="control">Элемент управления</param>
+            <param name="action">Делегат с необходимым действием</param>
+            <param name="arg">Аргумент делагата с действием</param>
+        </member>
+        <member name="T:Feodosia.Lib.InteropServices.Win32ApiHelper">
+            <summary>
+            Класс предоставлющий методы Win32 API
+            </summary>
+        </member>
+        <member name="F:Feodosia.Lib.InteropServices.Win32ApiHelper.WM_SETREDRAW">
+            <summary>
+            Приложение отправляет сообщение WM_SETREDRAW окну для того, чтобы дать возможность изменениям в этом окне быть перерисованными или воспрепятствовать изменениям в этом окне быть перерисованными
+            </summary>
+        </member>
+        <member name="F:Feodosia.Lib.InteropServices.Win32ApiHelper.SW_HIDE">
+            <summary>
+            Скрывает окно
+            </summary>
+        </member>
+        <member name="F:Feodosia.Lib.InteropServices.Win32ApiHelper.SW_SHOW">
+            <summary>
+            Показывает окно
+            </summary>
+        </member>
+        <member name="F:Feodosia.Lib.InteropServices.Win32ApiHelper.EM_SETCUEBANNER">
+            <summary>
+            Устанавливает watermark элемента управления
+            </summary>
+        </member>
+        <member name="F:Feodosia.Lib.InteropServices.Win32ApiHelper.Nullhandle">
+            <summary>
+            Нулевой дескриптор
+            </summary>
+        </member>
+        <member name="M:Feodosia.Lib.InteropServices.Win32ApiHelper.SendMessage(System.IntPtr,System.UInt32,System.IntPtr,System.IntPtr)">
+            <summary>
+            Отправляет заданное сообщение окну или окнам
+            </summary>
+            <param name="hWnd">Дескриптор окна</param>
+            <param name="wMsg">Отправляемое сообщение</param>
+            <param name="wParam">Определяет дополнительную конкретизирующую сообщение информацию</param>
+            <param name="lParam">Определяет дополнительную конкретизирующую сообщение информацию</param>
+            <returns>Результат обработки сообщения</returns>
+        </member>
+        <member name="M:Feodosia.Lib.InteropServices.Win32ApiHelper.SendMessage(System.IntPtr,System.UInt32,System.Int32,System.Int32)">
+            <summary>
+            Отправляет заданное сообщение окну или окнам
+            </summary>
+            <param name="hWnd">Дескриптор окна</param>
+            <param name="wMsg">Отправляемое сообщение</param>
+            <param name="wParam">Определяет дополнительную конкретизирующую сообщение информацию</param>
+            <param name="lParam">Определяет дополнительную конкретизирующую сообщение информацию</param>
+            <returns>Результат обработки сообщения</returns>
+        </member>
+        <member name="M:Feodosia.Lib.InteropServices.Win32ApiHelper.SendMessage(System.IntPtr,System.UInt32,System.IntPtr,System.Text.StringBuilder)">
+            <summary>
+            Отправляет заданное сообщение окну или окнам
+            </summary>
+            <param name="hWnd">Дескриптор окна</param>
+            <param name="wMsg">Отправляемое сообщение</param>
+            <param name="wParam">Определяет дополнительную конкретизирующую сообщение информацию</param>
+            <param name="lParam">Определяет дополнительную конкретизирующую сообщение информацию</param>
+            <returns>Результат обработки сообщения</returns>
+        </member>
+        <member name="M:Feodosia.Lib.InteropServices.Win32ApiHelper.SendMessage(System.IntPtr,System.UInt32,System.IntPtr,System.String)">
+            <summary>
+            Отправляет заданное сообщение окну или окнам
+            </summary>
+            <param name="hWnd">Дескриптор окна</param>
+            <param name="wMsg">Отправляемое сообщение</param>
+            <param name="wParam">Определяет дополнительную конкретизирующую сообщение информацию</param>
+            <param name="lParam">Определяет дополнительную конкретизирующую сообщение информацию</param>
+            <returns>Результат обработки сообщения</returns>
+        </member>
+        <member name="M:Feodosia.Lib.InteropServices.Win32ApiHelper.SendMessageW(System.IntPtr,System.UInt32,System.IntPtr,System.String)">
+            <summary>
+            Отправляет заданное сообщение окну или окнам. Версия для UNICODE
+            </summary>
+            <param name="hWnd">Дескриптор окна</param>
+            <param name="wMsg">Отправляемое сообщение</param>
+            <param name="wParam">Определяет дополнительную конкретизирующую сообщение информацию</param>
+            <param name="lParam">Определяет дополнительную конкретизирующую сообщение информацию</param>
+            <returns>Результат обработки сообщения</returns>
+        </member>
+        <member name="M:Feodosia.Lib.InteropServices.Win32ApiHelper.GetConsoleWindow">
+            <summary>
+            Получает дескриптор консольного окна в связанном процессе
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Feodosia.Lib.InteropServices.Win32ApiHelper.ShowWindow(System.IntPtr,System.Int32)">
+            <summary>
+            Устанавливает состояние отображения заданного окна окна
+            </summary>
+            <param name="hWnd">Дескриптор окна</param>
+            <param name="nCmdShow">Параметр отображения окна</param>
+            <returns></returns>
+        </member>
+        <member name="M:Feodosia.Lib.InteropServices.Win32ApiHelper.SwitchToThisWindow(System.IntPtr,System.Boolean)">
+            <summary>
+            Переключает фокус на указанное окно и переносит ено на передний план
+            </summary>
+            <param name="hWnd">Дескриптор окна</param>
+            <param name="fAltTab">Переключаться посредством комбинации клавиш Alt+Tab, если значение этого параметра установлено в true</param>
+        </member>
+        <member name="M:Feodosia.Lib.InteropServices.Win32ApiHelper.GetPrivateProfileString(System.String,System.String,System.String,System.Text.StringBuilder,System.Int32,System.String)">
+            <summary>
+            Возвращает строку из указанной секции INI файла
+            </summary>
+            <param name="lpAppName">Название раздела содержащего имя ключа</param>
+            <param name="lpKeyName">Имя ключа связанного с возвращаемой строкой</param>
+            <param name="lpDefault">Строка по умолчанию</param>
+            <param name="lpReturnedString">Буфер в который будет помещена получаемая строка</param>
+            <param name="nSize">Размер буфера lpReturnedString</param>
+            <param name="lpFileName">Путь к INI файлу</param>
+            <returns>Количество символов в полученной строке</returns>
+        </member>
+        <member name="M:Feodosia.Lib.InteropServices.Win32ApiHelper.WritePrivateProfileString(System.String,System.String,System.String,System.String)">
+            <summary>
+            Копирует строку в указанную секцию INI файла
+            </summary>
+            <param name="lpAppName">Имя раздела в который будет скопирована устанавливаемая строка</param>
+            <param name="lpKeyName">Имя ключа связанного с устанавливаемой строкой</param>
+            <param name="lpString">Устанавливаемое строковое значение</param>
+            <param name="lpFileName">Путь к INI файлу</param>
+            <returns>При успешном выполнении, возвращает true</returns>
+        </member>
+        <member name="M:Feodosia.Lib.IO.IOHelper.IsPathDirectory(System.String)">
+            <summary>
+            Выполняет проверку, является заданный путь папкой или файлом
+            </summary>
+            <param name="path">Проверяемый путь</param>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.IO.PathTooLongException"></exception>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+            <exception cref="T:System.IO.DirectoryNotFoundException"></exception>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <returns></returns>
+        </member>
+        <member name="M:Feodosia.Lib.IO.IOHelper.GetExeVersion(System.Reflection.Assembly)">
+            <summary>
+            Возвращает версию данной программы
+            </summary>
+            <param name="assembly">Сборка, версию которой необходимо получить</param>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+            <returns></returns>
+        </member>
+        <member name="M:Feodosia.Lib.IO.IOHelper.GetCurrentDir(System.Reflection.Assembly)">
+            <summary>
+            Возвращает путь к текущей рабочей папке
+            </summary>
+            <param name="assembly">Сборка, папку которой необходимо получить</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
