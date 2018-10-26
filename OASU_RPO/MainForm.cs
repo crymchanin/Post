@@ -127,6 +127,7 @@ namespace OASU_RPO {
 
                     if (MessageBox.Show("Создать файл конфигурации по умолчанию?", "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) {
                         AppHelper.Configuration = new Config();
+                        AppHelper.ConfHelper.SaveConfig(AppHelper.Configuration);
                     }
                     else {
                         Load += (s, e) => Application.Exit();

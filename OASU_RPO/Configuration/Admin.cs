@@ -43,7 +43,7 @@ namespace OASU_RPO.Configuration {
         [OnDeserialized]
         internal void OnDeserialized(StreamingContext context) {
             if (string.IsNullOrWhiteSpace(RootName) || string.IsNullOrWhiteSpace(RootPassword)) {
-                throw new Exception("Логин или пароль администратора не задан");
+                throw new Exception("Логин или пароль администратора не задан. Воспользуйтесь утилитой для их генерации");
             }
         }
     }
