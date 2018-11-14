@@ -9,8 +9,11 @@ using Feodosiya.Lib.Threading;
 using OASU_RPO.Configuration;
 using OASU_RPO.GUI;
 using OASU_RPO.ru.crimeanpost;
+using OASU_RPO.Updates;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -29,7 +32,9 @@ namespace OASU_RPO {
 
         private volatile bool IsRunning = false;
 
-        private static string CD = IOHelper.GetCurrentDir(Assembly.GetExecutingAssembly());
+        private static Assembly ExecutingAssembly = Assembly.GetExecutingAssembly();
+
+        private static string CD = IOHelper.GetCurrentDir(ExecutingAssembly);
 
         private static NotificationWindow notifyWindow;
 
@@ -74,7 +79,7 @@ namespace OASU_RPO {
                     this.InvokeIfRequired(delegate {
                         Drawing.Rectangle workingArea = Screen.GetWorkingArea(this);
                         notifyWindow.Location = new Drawing.Point(workingArea.Right - notifyWindow.Size.Width, workingArea.Bottom - notifyWindow.Size.Height);
-                        notifyWindow.Show(null);
+                        notifyWindow.Show(this);
                     });
                 }
                 else {
@@ -117,7 +122,7 @@ namespace OASU_RPO {
 
         // Инициализация
         private bool Init() {
-            AppHelper.ConfHelper = new ConfHelper("settings.conf");
+            AppHelper.ConfHelper = new ConfHelper(Path.Combine(CD, "settings.conf"));
             AppHelper.Configuration = AppHelper.ConfHelper.LoadConfig<Config>();
             if (!AppHelper.ConfHelper.Success) {
                 MessageBox.Show("Ошибка загрузки конфигурации:\r\n" + AppHelper.ConfHelper.LastError.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -131,16 +136,29 @@ namespace OASU_RPO {
                     }
                     else {
                         Load += (s, e) => Application.Exit();
-
                         return false;
                     }
                 }
                 else {
                     Load += (s, e) => Application.Exit();
-
                     return false;
                 }     
             }
+
+            if (AppHelper.Configuration.Global.CheckUpdates) {
+                try {
+                    if (UpdatesHelper.CheckUpdates(FileVersionInfo.GetVersionInfo(ExecutingAssembly.Location).FileVersion)) {
+                        UpdatesHelper.DownloadPackage();
+
+                        Load += (s, e) => Application.Exit();
+                        return false;
+                    }
+                }
+                catch (Exception ex) {
+                    AppHelper.Log.Write("Ошибка проверки обновлений: " + ex.ToString(), Feodosiya.Lib.Logs.MessageType.Error);
+                }
+            }
+
             AppHelper.Configuration.SingletonEvent.PropertyChangedEvent += new ChangeEventHandler(OnCofigurationChanged);
 
             StringHelper.Encoding = Encoding.UTF8;
@@ -172,7 +190,7 @@ namespace OASU_RPO {
 
                 MainTimer.Interval = AppHelper.Configuration.Global.ShedulerInterval;
 
-                notifyWindow = new NotificationWindow();
+                notifyWindow = new NotificationWindow(this);
                 notifyWindow.DialogType = NotificationWindow.DialogTypes.Error;
                 notifyWindow.Text = "Неотправленные файлы ОАСУ РПО";
                 notifyWindow.NoClose = true;

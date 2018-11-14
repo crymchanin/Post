@@ -55,8 +55,6 @@ namespace OASU_RPO.GUI {
         /// <param name="owner">Родительская форма</param>
         public NotificationWindow(Form owner) : this() {
             Owner = owner;
-            Owner.SizeChanged += Parent_SizeLocationChanged;
-            Owner.LocationChanged += Parent_SizeLocationChanged;
         }
 
         /// <summary>
@@ -68,16 +66,6 @@ namespace OASU_RPO.GUI {
             _lifeTime = Math.Max(lifeTime, 1);
             TimerLabel.Text = string.Format("Закрытие через {0} сек.", _lifeTime);
             MainTimer.Enabled = true;
-        }
-
-        /// <summary>
-        /// Перемещает окно относительно родительского
-        /// </summary>
-        private new void Move() {
-            int x = Owner.Width - Width - 20;
-            int y = Owner.Height - Height - 64;
-
-            Location = Owner.PointToScreen(new Point(x, y));
         }
 
         /// <summary>
@@ -98,10 +86,6 @@ namespace OASU_RPO.GUI {
                     SoundPlayer player = new SoundPlayer(Properties.Resources.warning);
                     player.Play();
                 }
-            }
-
-            if (Owner != null) {
-                Move();
             }
         }
 
@@ -222,11 +206,5 @@ namespace OASU_RPO.GUI {
             }
         }
 
-        /// <summary>
-        /// Обработчик события перемещения родительского окна
-        /// </summary>
-        private void Parent_SizeLocationChanged(object sender, EventArgs e) {
-            Move();
-        }
     }
 }

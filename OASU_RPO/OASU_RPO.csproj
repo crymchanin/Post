@@ -99,6 +99,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLHelper.cs" />
+    <Compile Include="Updates\ResponseObject.cs" />
+    <Compile Include="Updates\UpdatesHelper.cs" />
     <Compile Include="Web References\ru.crimeanpost\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

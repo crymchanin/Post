@@ -12,6 +12,8 @@ namespace OASU_RPO.GUI {
             InitializeComponent();
 
             LoadConfiguration();
+
+            GuidBox.Text = AppHelper.GUID;
         }
 
         /// <summary>

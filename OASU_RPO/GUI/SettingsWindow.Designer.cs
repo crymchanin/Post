@@ -40,6 +40,9 @@
             this.SoundNotificationsBox = new System.Windows.Forms.CheckBox();
             this.InterfaceButton = new System.Windows.Forms.Button();
             this.ShedulerGroupBox = new System.Windows.Forms.GroupBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.SearchDaysCountBox = new System.Windows.Forms.NumericUpDown();
+            this.label18 = new System.Windows.Forms.Label();
             this.MsTimespanLabel = new System.Windows.Forms.Label();
             this.ShedulerBox = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
@@ -84,15 +87,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.RootNameBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.SearchDaysCountBox = new System.Windows.Forms.NumericUpDown();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
+            this.AssemblyInfoBox = new System.Windows.Forms.GroupBox();
+            this.GuidBox = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.MainTabControl.SuspendLayout();
             this.GlobalPage.SuspendLayout();
             this.RunAndUpdatesBox.SuspendLayout();
             this.InterfaceBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OpacityBox)).BeginInit();
             this.ShedulerGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SearchDaysCountBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ShedulerBox)).BeginInit();
             this.FbConnectionPage.SuspendLayout();
             this.FBGroupBox.SuspendLayout();
@@ -101,7 +105,7 @@
             this.ExchangeGroupBox.SuspendLayout();
             this.AdminPage.SuspendLayout();
             this.RootCredentialsGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SearchDaysCountBox)).BeginInit();
+            this.AssemblyInfoBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainTabControl
@@ -293,6 +297,47 @@
             this.ShedulerGroupBox.TabIndex = 0;
             this.ShedulerGroupBox.TabStop = false;
             this.ShedulerGroupBox.Text = "Планировщик";
+            // 
+            // label19
+            // 
+            this.label19.AutoEllipsis = true;
+            this.label19.Location = new System.Drawing.Point(390, 47);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(42, 13);
+            this.label19.TabIndex = 5;
+            this.label19.Text = "дней";
+            // 
+            // SearchDaysCountBox
+            // 
+            this.SearchDaysCountBox.BackColor = System.Drawing.Color.AliceBlue;
+            this.SearchDaysCountBox.Location = new System.Drawing.Point(293, 44);
+            this.SearchDaysCountBox.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.SearchDaysCountBox.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.SearchDaysCountBox.Name = "SearchDaysCountBox";
+            this.SearchDaysCountBox.Size = new System.Drawing.Size(91, 20);
+            this.SearchDaysCountBox.TabIndex = 1;
+            this.SearchDaysCountBox.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(295, 28);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(99, 13);
+            this.label18.TabIndex = 4;
+            this.label18.Text = "Искать файлы за:";
             // 
             // MsTimespanLabel
             // 
@@ -720,6 +765,7 @@
             // 
             // AdminPage
             // 
+            this.AdminPage.Controls.Add(this.AssemblyInfoBox);
             this.AdminPage.Controls.Add(this.RootCredentialsGroupBox);
             this.AdminPage.Location = new System.Drawing.Point(4, 22);
             this.AdminPage.Name = "AdminPage";
@@ -794,46 +840,37 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Логин";
             // 
-            // SearchDaysCountBox
+            // AssemblyInfoBox
             // 
-            this.SearchDaysCountBox.BackColor = System.Drawing.Color.AliceBlue;
-            this.SearchDaysCountBox.Location = new System.Drawing.Point(293, 44);
-            this.SearchDaysCountBox.Maximum = new decimal(new int[] {
-            60,
-            0,
-            0,
-            0});
-            this.SearchDaysCountBox.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.SearchDaysCountBox.Name = "SearchDaysCountBox";
-            this.SearchDaysCountBox.Size = new System.Drawing.Size(91, 20);
-            this.SearchDaysCountBox.TabIndex = 1;
-            this.SearchDaysCountBox.Value = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
+            this.AssemblyInfoBox.Controls.Add(this.label20);
+            this.AssemblyInfoBox.Controls.Add(this.GuidBox);
+            this.AssemblyInfoBox.Location = new System.Drawing.Point(8, 128);
+            this.AssemblyInfoBox.Name = "AssemblyInfoBox";
+            this.AssemblyInfoBox.Size = new System.Drawing.Size(510, 101);
+            this.AssemblyInfoBox.TabIndex = 1;
+            this.AssemblyInfoBox.TabStop = false;
+            this.AssemblyInfoBox.Text = "Информация о сборке";
             // 
-            // label18
+            // GuidBox
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(295, 28);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(99, 13);
-            this.label18.TabIndex = 4;
-            this.label18.Text = "Искать файлы за:";
+            this.GuidBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.GuidBox.BackColor = System.Drawing.Color.AliceBlue;
+            this.GuidBox.Location = new System.Drawing.Point(10, 44);
+            this.GuidBox.MaxLength = 36;
+            this.GuidBox.Name = "GuidBox";
+            this.GuidBox.ReadOnly = true;
+            this.GuidBox.Size = new System.Drawing.Size(490, 20);
+            this.GuidBox.TabIndex = 0;
             // 
-            // label19
+            // label20
             // 
-            this.label19.AutoEllipsis = true;
-            this.label19.Location = new System.Drawing.Point(390, 47);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(42, 13);
-            this.label19.TabIndex = 5;
-            this.label19.Text = "дней";
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(12, 28);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(34, 13);
+            this.label20.TabIndex = 1;
+            this.label20.Text = "GUID";
             // 
             // SettingsWindow
             // 
@@ -859,6 +896,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.OpacityBox)).EndInit();
             this.ShedulerGroupBox.ResumeLayout(false);
             this.ShedulerGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SearchDaysCountBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ShedulerBox)).EndInit();
             this.FbConnectionPage.ResumeLayout(false);
             this.FBGroupBox.ResumeLayout(false);
@@ -870,7 +908,8 @@
             this.AdminPage.ResumeLayout(false);
             this.RootCredentialsGroupBox.ResumeLayout(false);
             this.RootCredentialsGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SearchDaysCountBox)).EndInit();
+            this.AssemblyInfoBox.ResumeLayout(false);
+            this.AssemblyInfoBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -940,5 +979,8 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.NumericUpDown SearchDaysCountBox;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.GroupBox AssemblyInfoBox;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox GuidBox;
     }
 }
