@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Feodosiya.Lib", "..\..\Feod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashGenerator", "HashGenerator\HashGenerator.csproj", "{3B5D1498-13D3-4235-B1DD-B2CAA7544B22}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Updater", "Updater\Updater.csproj", "{CC4BDC27-761F-4C9F-A9A0-A84DBD0BAD2C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{3B5D1498-13D3-4235-B1DD-B2CAA7544B22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B5D1498-13D3-4235-B1DD-B2CAA7544B22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B5D1498-13D3-4235-B1DD-B2CAA7544B22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC4BDC27-761F-4C9F-A9A0-A84DBD0BAD2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC4BDC27-761F-4C9F-A9A0-A84DBD0BAD2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC4BDC27-761F-4C9F-A9A0-A84DBD0BAD2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC4BDC27-761F-4C9F-A9A0-A84DBD0BAD2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // Управление общими сведениями о сборке осуществляется с помощью 
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("Проверка отправки файлов ОАСУ РПО")]
+[assembly: AssemblyTitle("Updater")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("ФГУП Почта Крыма")]
-[assembly: AssemblyProduct("OASU_RPO")]
-[assembly: AssemblyCopyright("Copyright © Анатолий Карпекин 2018")]
+[assembly: AssemblyProduct("Updater")]
+[assembly: AssemblyCopyright("Copyright © Анатолий Карпекин Company 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("862abb0b-205d-482e-bba4-f0ed9626a87c")]
+[assembly: Guid("cc4bdc27-761f-4c9f-a9a0-a84dbd0bad2c")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // Можно задать все значения или принять номера сборки и редакции по умолчанию 
 // используя "*", как показано ниже:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.2.1.18")]
-[assembly: AssemblyFileVersion("1.2.1.18")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]

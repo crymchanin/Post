@@ -213,7 +213,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Tag = "";
-            this.Text = "Проверка отправки файлов ОАСУ РПО (DEBUG)";
+            this.Text = "Проверка отправки файлов ОАСУ РПО";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.MainForm_Paint);
             this.MainStrip.ResumeLayout(false);

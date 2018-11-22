@@ -145,10 +145,12 @@ namespace OASU_RPO {
                 }     
             }
 
+            // Проверка наличия обновлений
             if (AppHelper.Configuration.Global.CheckUpdates) {
                 try {
-                    if (UpdatesHelper.CheckUpdates(FileVersionInfo.GetVersionInfo(ExecutingAssembly.Location).FileVersion)) {
-                        UpdatesHelper.DownloadPackage();
+                    string version = FileVersionInfo.GetVersionInfo(ExecutingAssembly.Location).FileVersion;
+                    if (UpdatesHelper.CheckUpdates(version)) {
+                        Process.Start("Updater.exe", string.Format("{0} {1} {2}", version, AppHelper.Configuration.Global.UpdatesServerName, Program.ProductName));
 
                         Load += (s, e) => Application.Exit();
                         return false;
