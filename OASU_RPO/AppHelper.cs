@@ -17,7 +17,7 @@ namespace OASU_RPO {
         /// <summary>
         /// Конфигурационный файл
         /// </summary>
-        public static ConfHelper ConfHelper { get; set; } = new ConfHelper("settings.conf");
+        public static ConfHelper ConfHelper { get; set; }
 
         /// <summary>
         /// Конфигурация программы

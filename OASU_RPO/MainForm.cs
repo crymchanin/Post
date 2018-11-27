@@ -43,13 +43,15 @@ namespace OASU_RPO {
         private void CheckFiles() {
             try {
                 IsRunning = true;
-                DateTime begin = DateTime.Now.AddDays(AppHelper.Configuration.Global.SearchDaysCount.ToNegative());
+                int hours = (AppHelper.Configuration.Global.SearchDaysCount * 24);
+                DateTime begin = DateTime.Now.AddHours(hours.ToNegative());
+                DateTime beginUTC = DateTime.Now.ToUniversalTime().Date.AddHours(hours.ToNegative());
 
                 ShowMessage("Получение списка созданных файлов ОАСУ РПО...");
                 List<FileInfo> files = SQLHelper.GetCreatedFiles(AppHelper.Configuration.Global.SearchDaysCount).ToList();
                 List<string> msgFiles = new List<string>();
                 ShowMessage("Получение списка отправленных файлов ОАСУ РПО...");
-                ItemType[] messages = ExchangeMailHelper.GetMessages(begin);
+                ItemType[] messages = ExchangeMailHelper.GetMessages(beginUTC);
 
                 foreach (ItemType item in messages) {
                     Match match = new Regex(AppHelper.Configuration.Exchange.MessageRegex).Match(item.Subject);
