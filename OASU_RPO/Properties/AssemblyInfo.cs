@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("ФГУП Почта Крыма")]
 [assembly: AssemblyProduct("OASU_RPO")]
-[assembly: AssemblyCopyright("Copyright © Анатолий Карпекин 2018")]
+[assembly: AssemblyCopyright("Copyright © Анатолий Карпекин 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // Можно задать все значения или принять номера сборки и редакции по умолчанию 
 // используя "*", как показано ниже:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.2.1.19")]
-[assembly: AssemblyFileVersion("1.2.1.19")]
+[assembly: AssemblyVersion("1.2.1.20")]
+[assembly: AssemblyFileVersion("1.2.1.20")]

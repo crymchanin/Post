@@ -1,6 +1,7 @@
 ﻿using Feodosiya.Lib.InteropServices;
 using System;
 using System.Drawing;
+using System.IO;
 using System.Media;
 using System.Windows.Forms;
 
@@ -79,11 +80,23 @@ namespace OASU_RPO.GUI {
 
             if (SoundNotifications) {
                 if (DialogType == DialogTypes.Error) {
-                    SoundPlayer player = new SoundPlayer(Properties.Resources.error);
+                    SoundPlayer player;
+                    if (File.Exists(Path.Combine(Program.CurrentDirectory, "error.wav"))) {
+                        player = new SoundPlayer(Path.Combine(Program.CurrentDirectory, "error.wav"));
+                    }
+                    else {
+                        player = new SoundPlayer(Properties.Resources.error);
+                    }
                     player.Play();
                 }
                 else if (DialogType == DialogTypes.Warning) {
-                    SoundPlayer player = new SoundPlayer(Properties.Resources.warning);
+                    SoundPlayer player;
+                    if (File.Exists(Path.Combine(Program.CurrentDirectory, "warning.wav"))) {
+                        player = new SoundPlayer(Path.Combine(Program.CurrentDirectory, "warning.wav"));
+                    }
+                    else {
+                        player = new SoundPlayer(Properties.Resources.warning);
+                    }
                     player.Play();
                 }
             }

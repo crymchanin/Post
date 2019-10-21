@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OASU_RPO", "OASU_RPO\OASU_RPO.csproj", "{862ABB0B-205D-482E-BBA4-F0ED9626A87C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Feodosiya.Lib", "..\..\Feodosiya.Lib\Feodosiya.Lib\Feodosiya.Lib.csproj", "{D3ADC41D-D61D-4485-8661-508FA998ACC5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashGenerator", "HashGenerator\HashGenerator.csproj", "{3B5D1498-13D3-4235-B1DD-B2CAA7544B22}"
 EndProject
@@ -21,10 +19,6 @@ Global
 		{862ABB0B-205D-482E-BBA4-F0ED9626A87C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{862ABB0B-205D-482E-BBA4-F0ED9626A87C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{862ABB0B-205D-482E-BBA4-F0ED9626A87C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D3ADC41D-D61D-4485-8661-508FA998ACC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D3ADC41D-D61D-4485-8661-508FA998ACC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D3ADC41D-D61D-4485-8661-508FA998ACC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D3ADC41D-D61D-4485-8661-508FA998ACC5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3B5D1498-13D3-4235-B1DD-B2CAA7544B22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3B5D1498-13D3-4235-B1DD-B2CAA7544B22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B5D1498-13D3-4235-B1DD-B2CAA7544B22}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -36,5 +30,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {616E3C4B-9DB0-4560-A13D-6740AB342C99}
 	EndGlobalSection
 EndGlobal

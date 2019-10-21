@@ -38,7 +38,14 @@
   <PropertyGroup>
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Feodosiya.Lib, Version=1.2.2.209, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Feodosiya.Lib.dll</HintPath>
+    </Reference>
     <Reference Include="FirebirdSql.Data.FirebirdClient">
       <HintPath>.\FirebirdSql.Data.FirebirdClient.dll</HintPath>
     </Reference>
@@ -135,6 +142,7 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -474,12 +482,6 @@
     <None Include="close_button.png" />
     <None Include="error.wav" />
     <Content Include="icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Feodosiya.Lib\Feodosiya.Lib\Feodosiya.Lib.csproj">
-      <Project>{d3adc41d-d61d-4485-8661-508fa998acc5}</Project>
-      <Name>Feodosiya.Lib</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

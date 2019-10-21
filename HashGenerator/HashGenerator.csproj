@@ -36,6 +36,10 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Feodosiya.Lib, Version=1.2.2.209, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Feodosiya.Lib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -84,12 +88,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Feodosiya.Lib\Feodosiya.Lib\Feodosiya.Lib.csproj">
-      <Project>{d3adc41d-d61d-4485-8661-508fa998acc5}</Project>
-      <Name>Feodosiya.Lib</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

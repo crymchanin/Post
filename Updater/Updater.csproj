@@ -36,6 +36,10 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Feodosiya.Lib, Version=1.2.2.209, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Feodosiya.Lib.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=31d245b5ff7f47c2, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\ICSharpCode.SharpZipLib.dll</HintPath>
@@ -88,12 +92,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Feodosiya.Lib\Feodosiya.Lib\Feodosiya.Lib.csproj">
-      <Project>{d3adc41d-d61d-4485-8661-508fa998acc5}</Project>
-      <Name>Feodosiya.Lib</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
